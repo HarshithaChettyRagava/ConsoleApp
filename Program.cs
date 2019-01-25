@@ -6,36 +6,45 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            
-            
-            bool isStoreOpen=false;
+
+
+            bool isStoreOpen = false;
             int time24hrsformat;
             double customerAge;
-            char toExit='q';
-            String itemName=String.Empty;
+            char toExit = 'q';
+            String itemName = String.Empty;
             decimal itemCost;
             decimal totalCost;
-            decimal tax=0.30m;
+            decimal tax = 0.30m;
 
             Console.WriteLine("Please enter your name");
             var name = Console.ReadLine();
             Console.WriteLine($"Welcome {name}.");
 
-            Console.WriteLine("Please enter current time in 24hours format");
+            Console.WriteLine("Please enter your age");
+            String getAge = Console.ReadLine();
+            customerAge = Convert.ToDouble(getAge);
+            if(customerAge<=10){
+                Console.WriteLine($"Sorry {name}, You are not having enough age to do shopping!");
+            }
+            else{
+            Console.WriteLine("\nPlease enter current time in 24hours format");
             var str_time = Console.ReadLine();
             time24hrsformat = Int32.Parse(str_time);
-            if(time24hrsformat<=12){
-                Console.WriteLine("Store is Open! Happy shopping");
-                isStoreOpen=true;
+            if (time24hrsformat <= 12)
+            {
+                Console.WriteLine("Store is Open! Happy shopping\n");
+                isStoreOpen = true;
             }
-            else if(time24hrsformat>12 && time24hrsformat<=24){
+            else if (time24hrsformat > 12 && time24hrsformat <= 24)
+            {
                 Console.WriteLine("Sorry,Store is Closed!");
-                isStoreOpen=false;
+                isStoreOpen = false;
             }
             else
-            Console.WriteLine("Please enter valid 24hrs format time");
+                Console.WriteLine("Please enter valid 24hrs format time\n");
 
-            
+
             // if(result.Equals("Y") || result.Equals("y")){
             //         isStoreOpen = true;
             // }
@@ -46,9 +55,10 @@ namespace ConsoleApp
             // else{
             //     Console.WriteLine("Please enter valid string");
             // }
-    
 
-            while(isStoreOpen){
+
+            while (isStoreOpen)
+            {
                 Console.WriteLine("Please select your item listed below:\n");
                 Console.WriteLine("Fat_FreeMushroom_Soup\n");
                 Console.WriteLine("Fullchicken\n");
@@ -56,38 +66,42 @@ namespace ConsoleApp
                 Console.WriteLine("Donut\n");
                 Console.WriteLine("Cinnamon rolls_Pac\n");
                 Console.WriteLine("Enter item name or 'q' to quit: ");
-                 itemName = Console.ReadLine();  //always return a string
+                itemName = Console.ReadLine();  //always return a string
                 // toExit = char.Parse(str);
-                if(itemName.Equals(toExit)){
-                   Console.WriteLine("Done!");
-                   break;
+                if (itemName.Equals(toExit))
+                {
+                    Console.WriteLine("Done!");
+                    break;
                 }
                 else
-                isStoreOpen = false;  
+                    isStoreOpen = false;
 
-            switch (itemName){
-                case "Fat_FreeMushroom_Soup": 
-                    itemCost = 3.4m;
-                    break;
-                case "Fullchicken":
-                    itemCost = 7.5m;
-                    break;
-                case "VegSandwich":
-                    itemCost = 2.0m;
-                    break;
-                case "Donut":
-                    itemCost = 0.78m;
-                    break;    
-                case "Cinnamon rolls_Pac":
-                    itemCost = 2.45m;
-                    break;
-                default:
-                     itemCost = 0.0m;
-                     break;
+                switch (itemName)
+                {
+                    case "Fat_FreeMushroom_Soup":
+                        itemCost = 3.4m;
+                        break;
+                    case "Fullchicken":
+                        itemCost = 7.5m;
+                        break;
+                    case "VegSandwich":
+                        itemCost = 2.0m;
+                        break;
+                    case "Donut":
+                        itemCost = 0.78m;
+                        break;
+                    case "Cinnamon rolls_Pac":
+                        itemCost = 2.45m;
+                        break;
+                    default:
+                        itemCost = 0.0m;
+                        tax = 0.0m;
+                        break;
+                }
+                totalCost = itemCost + tax;
+                Console.WriteLine($"{name}, Your item cost is: ${totalCost}.");
             }
-        totalCost = itemCost+tax;
-        Console.WriteLine($"Your item cost is: ${totalCost}.");
-       }
-    }   
+        }
     }
-}    
+}
+}
