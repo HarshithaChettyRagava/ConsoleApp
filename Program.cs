@@ -6,7 +6,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Harshitha!!");
+            
+            
             bool isStoreOpen=false;
             int time24hrsformat;
             double customerAge;
@@ -16,19 +17,23 @@ namespace ConsoleApp
             decimal totalCost;
             decimal tax=0.30m;
 
+            Console.WriteLine("Please enter your name");
+            var name = Console.ReadLine();
+            Console.WriteLine($"Welcome {name}.");
+
             Console.WriteLine("Please enter current time in 24hours format");
             var str_time = Console.ReadLine();
             time24hrsformat = Int32.Parse(str_time);
             if(time24hrsformat<=12){
-                Console.WriteLine("Is Store Open? Y/N");
-            var result=Console.ReadLine();
+                Console.WriteLine("Store is Open! Happy shopping");
+                isStoreOpen=true;
             }
             else if(time24hrsformat>12 && time24hrsformat<=24){
-
-
+                Console.WriteLine("Sorry,Store is Closed!");
+                isStoreOpen=false;
             }
             else
-            Console.WriteLine("Please enter valid 24hrs format");
+            Console.WriteLine("Please enter valid 24hrs format time");
 
             
             // if(result.Equals("Y") || result.Equals("y")){
@@ -44,7 +49,7 @@ namespace ConsoleApp
     
 
             while(isStoreOpen){
-                Console.WriteLine("Please select your item listed below:");
+                Console.WriteLine("Please select your item listed below:\n");
                 Console.WriteLine("Fat_FreeMushroom_Soup\n");
                 Console.WriteLine("Fullchicken\n");
                 Console.WriteLine("VegSandwich\n");
@@ -59,7 +64,6 @@ namespace ConsoleApp
                 }
                 else
                 isStoreOpen = false;  
-            }
 
             switch (itemName){
                 case "Fat_FreeMushroom_Soup": 
@@ -82,7 +86,8 @@ namespace ConsoleApp
                      break;
             }
         totalCost = itemCost+tax;
-        Console.WriteLine($"Your item cost is: {totalCost}.");
+        Console.WriteLine($"Your item cost is: ${totalCost}.");
        }
+    }   
     }
 }    
